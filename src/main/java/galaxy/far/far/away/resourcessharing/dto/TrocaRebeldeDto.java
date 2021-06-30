@@ -1,24 +1,14 @@
 package galaxy.far.far.away.resourcessharing.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class RebeldeDto {
+public class TrocaRebeldeDto {
     @JsonProperty("nome")
     private String nome;
-
-    @JsonProperty("idade")
-    private int idade;
-
-    @JsonProperty("genero")
-    private String genero;
-
-    @JsonProperty("localizacao")
-    private LocalizacaoDto localizacao;
 
     @JsonProperty("arma")
     private int countArma;
@@ -31,7 +21,4 @@ public class RebeldeDto {
 
     @JsonProperty("comida")
     private int countComida;
-
-    @JsonIgnore
-    private int traitorCount = 0;
 }

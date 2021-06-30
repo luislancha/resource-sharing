@@ -6,14 +6,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LocalizacaoDto {
-
-    @JsonProperty("latitude")
-    private String latitude;
-
-    @JsonProperty("longitude")
-    private String longitude;
+public class MigrarBaseDto {
 
     @JsonProperty("nome")
     private String nome;
+
+    @JsonProperty("localizacao")
+    private LocalizacaoDto localizacaoDto;
 }
