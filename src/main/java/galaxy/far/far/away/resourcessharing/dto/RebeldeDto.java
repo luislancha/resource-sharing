@@ -1,13 +1,16 @@
 package galaxy.far.far.away.resourcessharing.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@JsonIgnoreProperties
 public class RebeldeDto {
+
     @JsonProperty("nome")
     private String nome;
 

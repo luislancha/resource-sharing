@@ -19,3 +19,5 @@ CREATE TABLE rebels (
   traidor int NOT NULL
 );
 
+-- INSERT INTO localizacao VALUES ()
+

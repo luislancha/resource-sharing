@@ -10,13 +10,25 @@ import javax.persistence.*;
 @Entity
 @Table(name = "rebels")
 @NamedQueries({
+        @NamedQuery(name = RebeldeModel.FIND_REBELDE,
+                query = "FROM RebeldeModel r WHERE nome = :nome AND traitorCount < 3"
+        ),
         @NamedQuery(name = RebeldeModel.FIND_ALL,
         query = "FROM RebeldeModel r"
+        ),
+        @NamedQuery(name = RebeldeModel.FIND_ALL_REBELDES,
+                query = "FROM RebeldeModel r WHERE traitorCount < 3"
+        ),
+        @NamedQuery(name = RebeldeModel.FIND_ALL_TRAIDORES,
+                query = "FROM RebeldeModel r WHERE traitorCount >= 3"
         )
 })
 public class RebeldeModel {
 
     public static final String FIND_ALL = "RebeldeModel:FindAll";
+    public static final String FIND_REBELDE = "RebeldeModel:FindRebelde";
+    public static final String FIND_ALL_REBELDES = "RebeldeModel:FindAllRebeldes";
+    public static final String FIND_ALL_TRAIDORES = "RebeldeModel:FindAllTraidores";
 
     @Id
     @Column(name = "nome")
@@ -46,7 +58,4 @@ public class RebeldeModel {
 
     @Column(name = "traidor")
     private int traitorCount = 0;
-
-//    @Column(name = "inventario")
-//    private List<InventarioModel> inventario;
 }

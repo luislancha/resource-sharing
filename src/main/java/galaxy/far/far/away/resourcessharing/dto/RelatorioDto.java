@@ -8,10 +8,10 @@ import lombok.Setter;
 @Setter
 public class RelatorioDto {
     @JsonProperty("traidores")
-    private int quantidadeTraidores;
+    private double quantidadeTraidores;
 
     @JsonProperty("rebeldes")
-    private int quantidadeRebeldes;
+    private double quantidadeRebeldes;
 
     @JsonProperty("arma")
     private int quantidadeMediaArma;

@@ -18,4 +18,29 @@ public class RebeldeValidation {
             throw new ValidationException();
         }
     }
+
+    public void validateInventario (TrocaRebeldeDto trocaRebeldeDto, RebeldeDto rebeldeDto) {
+        if (trocaRebeldeDto.getCountArma() > rebeldeDto.getCountArma() ||
+                trocaRebeldeDto.getCountMunicao() > rebeldeDto.getCountMunicao() ||
+                trocaRebeldeDto.getCountAgua() > rebeldeDto.getCountAgua() ||
+                trocaRebeldeDto.getCountComida() > rebeldeDto.getCountComida()) {
+            throw new ValidationException("Quantidade de itens nao disponivel no inventario");
+        }
+    }
+
+    public void validateTroca (TrocaRebeldeDto firstTrocaRebeldeDto, TrocaRebeldeDto secondTrocaRebeldeDto) {
+        int countFirstInventario = getSoma(firstTrocaRebeldeDto);
+        int countSecondInventario = getSoma(secondTrocaRebeldeDto);
+
+        if (countFirstInventario != countSecondInventario) {
+            throw new ValidationException("Quantidade de pontos não valida");
+        }
+    }
+
+    private int getSoma (TrocaRebeldeDto rebeldeDto) {
+        return rebeldeDto.getCountArma() * 4
+                + rebeldeDto.getCountMunicao() * 3
+                + rebeldeDto.getCountAgua() * 2
+                + rebeldeDto.getCountComida() * 1;
+    }
 }
