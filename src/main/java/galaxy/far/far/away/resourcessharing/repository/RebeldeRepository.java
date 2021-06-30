@@ -50,7 +50,6 @@ public class RebeldeRepository {
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public RebeldeDto findRebelde (final String nome) {
-//        final RebeldeModel rebeldeModel = Optional.ofNullable(entityManager.find(RebeldeModel.class, nome)).orElseThrow(RebeldeNaoEncontradoException::new);
         try {
             final RebeldeModel rebeldeModel = Optional.ofNullable(entityManager.createNamedQuery(FIND_REBELDE, RebeldeModel.class)
                     .setParameter("nome", nome)
@@ -70,21 +69,21 @@ public class RebeldeRepository {
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public List<RebeldeDto> findAll () {
-        final List<RebeldeModel> rebeldeModelList= entityManager.createNamedQuery(FIND_ALL, RebeldeModel.class).getResultList();
-
-        return RebeldeMapper.INSTANCE.toList(rebeldeModelList);
+        return findRebeldes(FIND_ALL);
     }
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public List<RebeldeDto> findAllRebeldes () {
-        final List<RebeldeModel> rebeldeModelList= entityManager.createNamedQuery(FIND_ALL_REBELDES, RebeldeModel.class).getResultList();
-
-        return RebeldeMapper.INSTANCE.toList(rebeldeModelList);
+        return findRebeldes(FIND_ALL_REBELDES);
     }
 
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public List<RebeldeDto> findAllTraidores () {
-        final List<RebeldeModel> rebeldeModelList= entityManager.createNamedQuery(FIND_ALL_TRAIDORES, RebeldeModel.class).getResultList();
+        return findRebeldes(FIND_ALL_TRAIDORES);
+    }
+
+    private List<RebeldeDto> findRebeldes (final String queryName) {
+        final List<RebeldeModel> rebeldeModelList= entityManager.createNamedQuery(queryName, RebeldeModel.class).getResultList();
 
         return RebeldeMapper.INSTANCE.toList(rebeldeModelList);
     }
