@@ -18,6 +18,3 @@ CREATE TABLE rebels (
   comida int NOT NULL,
   traidor int NOT NULL
 );
-
--- INSERT INTO localizacao VALUES ()
-
